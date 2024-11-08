@@ -1,0 +1,44 @@
+@font-face {
+    font-family: vazir;
+    src: url('../../public/fonts/Vazirmatn-Regular.woff2'),
+      url('../../public/fonts/Vazir-Regular.eot') format('eot'),
+      url('../../public/fonts/Vazir-Regular.ttf') format('trueType');
+  }
+
+
+html {
+  scrollbar-width: none;
+}
+
+body {
+  font-family: "vazir";
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: #e57b2d;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e57b2d;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+body::-webkit-scrollbar {
+  width: 0em;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}

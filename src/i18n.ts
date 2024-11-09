@@ -50,6 +50,7 @@ i18n.use(initReactI18next).init({
         editTodoPlaceholder: "edit todo",
         editTodoButton: "edit todo",
         todoApp: "Todo App",
+        Guest: "Guest",
       },
     },
     fa: {
@@ -95,6 +96,7 @@ i18n.use(initReactI18next).init({
         addTodoButton: "اضافه کردن تسک",
         editTodoPlaceholder: "ویرایش تسک",
         editTodoButton: "ویرایش تسک",
+        Guest: "مهمان",
       },
     },
   },

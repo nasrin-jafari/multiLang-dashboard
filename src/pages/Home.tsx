@@ -1,6 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store.ts";
+import { useTheme } from "@mui/material/styles";
 const getIranTime = () => {
   const date = new Date();
   const iranTime = new Date(
@@ -38,7 +41,8 @@ const Dashboard: React.FC = () => {
 
   const hours = currentTime.getHours();
   const greeting = getGreetingMessage(hours);
-
+  const { username } = useSelector((state: RootState) => state.settings);
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -52,12 +56,16 @@ const Dashboard: React.FC = () => {
       <Typography
         variant="h1"
         component="h1"
-        sx={{ fontSize: "2.5rem", fontWeight: "bold" }}
+        sx={{
+          fontSize: "6rem",
+          fontWeight: "bold",
+          color: theme.palette.primary.main,
+        }}
       >
         {currentTime.toLocaleTimeString("fa-IR")}
       </Typography>
       <Typography variant="h1" component="h2" sx={{ fontSize: "2rem" }}>
-        {greeting}
+        {greeting} <span>{username ? username : `${t("Guest")}!`}</span>
       </Typography>
     </Box>
   );

@@ -9,7 +9,7 @@ interface SettingsState {
 const initialState: SettingsState = {
   language: "en",
   username: "",
-  isLightMode: true,
+  isLightMode: false,
 };
 
 const settingsSlice = createSlice({

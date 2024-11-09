@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-
+export const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
 const getIranTime = () => {
   const date = new Date();
   const iranTime = new Date(
-    date.toLocaleString("en-US", { timeZone: "Asia/Tehran" })
+    date.toLocaleString("en-US", { timeZone: "Asia/Tehran" }),
   );
   return iranTime;
 };
@@ -41,9 +41,25 @@ const Dashboard: React.FC = () => {
   const greeting = getGreetingMessage(hours);
 
   return (
-    <Box sx={{display :"flex" ,flexDirection :"column", justifyContent :"center" , alignItems :"center" , height :"100%"}}>
-      <Typography variant="h1" component="h1" sx={{fontSize :"2.5rem" , fontWeight :"bold"}}>{currentTime.toLocaleTimeString("fa-IR")}</Typography>
-      <Typography  variant="h1" component="h2" sx={{fontSize :"2rem"}}>{greeting}</Typography>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
+      <Typography
+        variant="h1"
+        component="h1"
+        sx={{ fontSize: "2.5rem", fontWeight: "bold" }}
+      >
+        {currentTime.toLocaleTimeString("fa-IR")}
+      </Typography>
+      <Typography variant="h1" component="h2" sx={{ fontSize: "2rem" }}>
+        {greeting}
+      </Typography>
     </Box>
   );
 };

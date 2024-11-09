@@ -8,7 +8,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  Toolbar
+  Toolbar,
 } from "@mui/material";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
@@ -17,7 +17,11 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { CiMenuBurger } from "react-icons/ci";
 import { FaHome } from "react-icons/fa";
-import { IoIosArrowBack, IoIosArrowForward, IoMdSettings } from "react-icons/io";
+import {
+  IoIosArrowBack,
+  IoIosArrowForward,
+  IoMdSettings,
+} from "react-icons/io";
 import { LuListTodo } from "react-icons/lu";
 import { TiWeatherShower } from "react-icons/ti";
 import { NavLink, Outlet } from "react-router-dom";
@@ -90,7 +94,7 @@ const Drawer = styled(MuiDrawer, {
   whiteSpace: "nowrap",
   boxSizing: "border-box",
   backgroundColor: theme.palette.grey[50],
-  boxShadow: theme.shadows[3], // اضافه کردن رنگ پس‌زمینه
+  boxShadow: theme.shadows[3],
   variants: [
     {
       props: ({ open }) => open,
@@ -98,7 +102,7 @@ const Drawer = styled(MuiDrawer, {
         ...openedMixin(theme),
         "& .MuiDrawer-paper": {
           ...openedMixin(theme),
-          backgroundColor: theme.palette.grey[50], // اضافه کردن رنگ پس‌زمینه به کاغذ
+          backgroundColor: theme.palette.grey[50],
         },
       },
     },
@@ -108,7 +112,7 @@ const Drawer = styled(MuiDrawer, {
         ...closedMixin(theme),
         "& .MuiDrawer-paper": {
           ...closedMixin(theme),
-          backgroundColor: theme.palette.grey[50], // اضافه کردن رنگ پس‌زمینه به کاغذ
+          backgroundColor: theme.palette.grey[50],
         },
       },
     },
@@ -138,22 +142,22 @@ export default function Layout() {
   const items = [
     {
       title: greetings.home,
-      url: "/", // مسیر داشبورد
+      url: "/",
       icon: FaHome,
     },
     {
       title: greetings.todoList,
-      url: "/todoList", // مسیر فهرست کارها
+      url: "/todoList",
       icon: LuListTodo,
     },
     {
       title: greetings.weather,
-      url: "/weather", // مسیر آب و هوا
+      url: "/weather",
       icon: TiWeatherShower,
     },
     {
       title: greetings.setting,
-      url: "/settings", // مسیر تنظیمات
+      url: "/settings",
       icon: IoMdSettings,
     },
   ];

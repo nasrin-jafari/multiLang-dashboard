@@ -1,63 +1,44 @@
-import { PaletteOptions } from '@mui/material';
+import { PaletteOptions } from "@mui/material";
 
-interface ExtendedPaletteOptions extends PaletteOptions {
-  grey: PaletteOptions['grey'] & {
-    1000?: string;
-    1100?: string;
-    1200?: string;
-    1300?: string;
-  };
-}
-
-export const lightPalette: ExtendedPaletteOptions = {
-  mode: 'light',
+export const lightPalette: PaletteOptions = {
+  mode: "light",
   primary: {
-    light: 'rgba(245, 134, 52, 0.30)',
-    main: '#FF9B00',
+    light: "rgba(245, 134, 52, 0.30)",
+    main: "#FF9B00",
   },
   secondary: {
-    main: '#06465D',
+    main: "#06465D",
   },
   info: {
-    light: '#14c8d4',
-    main: '#0093EF',
-    dark: '#514fa6',
+    light: "#14c8d4",
+    main: "#0093EF",
+    dark: "#514fa6",
   },
   success: {
-    light: 'rgba(55, 211, 171, 0.20)',
-    main: '#1BBC98',
-    dark: '#43eec6',
+    light: "rgba(55, 211, 171, 0.20)",
+    main: "#1BBC98",
+    dark: "#43eec6",
   },
   warning: {
-    light: 'rgba(248, 167, 30, 0.20)',
-    main: '#F8A71E',
-    dark: '#f58634',
+    light: "rgba(248, 167, 30, 0.20)",
+    main: "#F8A71E",
+    dark: "#f58634",
   },
   error: {
-    light: 'rgba(235, 87, 87, 0.30)',
-    main: '#EB5757',
+    light: "rgba(235, 87, 87, 0.30)",
+    main: "#EB5757",
   },
 
   grey: {
-    50:  '#F3F2F7',
-    100: '#fff',
-    200: '#9BB5BE',
-    300: '#39393D',
-    400: '#51515382',
-    500: '#5A6B87',
-    600: '#ffff',
-    700: '#8b9da3',
-    800: '#313A43',
-    900: '#39393D',
-    1000: '#1A242E',
-    1100: '#161C24',
-    1200: '#09151F',
-    1300: '#000',
+    50: "#F3F2F7",
+    100: "#fff",
+    200: "#9BB5BE",
+    300: "#000",
   },
   common: {
-    white: '#ffffff',
+    white: "#ffffff",
   },
   background: {
-    default:  '#DFE5E3',
+    default: "#DFE5E3",
   },
 };

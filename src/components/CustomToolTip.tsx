@@ -1,14 +1,18 @@
-import React, { ReactElement } from 'react';
-import { styled } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import React, { ReactElement } from "react";
+import { styled } from "@mui/material/styles";
+import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
 
 interface CustomTooltipProps {
   children: ReactElement;
   title: ReactElement | string;
-  align?: 'left';
+  align?: "left";
 }
 
-const CustomTooltip: React.FC<CustomTooltipProps> = ({ children, title, align }) => {
+const CustomTooltip: React.FC<CustomTooltipProps> = ({
+  children,
+  title,
+  align,
+}) => {
   const CustomizeTooltip = styled(({ className, ...props }: TooltipProps) => (
     <Tooltip
       {...props}
@@ -16,8 +20,8 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ children, title, align })
       PopperProps={{
         modifiers: [
           {
-            name: 'offset',
-            options: { offset: align === 'left' ? [-45, -45] : [0, -10] },
+            name: "offset",
+            options: { offset: align === "left" ? [-45, -45] : [0, -10] },
           },
         ],
       }}
@@ -25,7 +29,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ children, title, align })
   ))(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
       backgroundColor: theme.palette.grey[100],
-      color: theme.palette.grey[900],
+      color: theme.palette.grey[300],
       boxShadow: theme.shadows[1],
       fontSize: 13,
       padding: 12,

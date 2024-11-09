@@ -1,7 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-export const WEATHER_API = "https://api.open-meteo.com/v1/forecast";
 const getIranTime = () => {
   const date = new Date();
   const iranTime = new Date(

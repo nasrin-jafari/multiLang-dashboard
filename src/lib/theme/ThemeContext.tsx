@@ -1,13 +1,15 @@
 import {
   createContext,
   useContext,
-  useState,
-  useMemo,
   useEffect,
   ReactNode,
+  useMemo,
 } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 import { lightTheme, darkTheme } from "./Theme";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsLightMode, toggleTheme } from "../../redux/settingsSlice.ts";
+import { RootState } from "../../redux/store.ts";
 
 interface ThemeContextProps {
   isLightMode: boolean;
@@ -21,9 +23,9 @@ export const ThemeProviderComponent = ({
 }: {
   children: ReactNode;
 }) => {
-  const savedThemeMode = localStorage.getItem("theme");
-  const [isLightMode, setIsLightMode] = useState(
-    savedThemeMode === "light" || !savedThemeMode
+  const dispatch = useDispatch();
+  const isLightMode = useSelector((state: RootState) =>
+    selectIsLightMode(state),
   );
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export const ThemeProviderComponent = ({
         (event.ctrlKey && event.key.toLowerCase() === "q") ||
         event.key === "ض"
       ) {
-        toggleTheme();
+        dispatch(toggleTheme());
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -40,23 +42,17 @@ export const ThemeProviderComponent = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
-
-  const toggleTheme = () => {
-    setIsLightMode((prevMode) => {
-      const newMode = !prevMode;
-      localStorage.setItem("theme", newMode ? "light" : "dark");
-      return newMode;
-    });
-  };
+  }, [dispatch]);
 
   const theme = useMemo(
     () => (isLightMode ? lightTheme : darkTheme),
-    [isLightMode]
+    [isLightMode],
   );
 
   return (
-    <ThemeContext.Provider value={{ isLightMode, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ isLightMode, toggleTheme: () => dispatch(toggleTheme()) }}
+    >
       <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}
@@ -69,7 +65,7 @@ export const useThemeContext = () => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error(
-      "useThemeContext must be used within a ThemeProviderComponent"
+      "useThemeContext must be used within a ThemeProviderComponent",
     );
   }
   return context;

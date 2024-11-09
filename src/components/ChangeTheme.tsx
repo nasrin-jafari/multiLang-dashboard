@@ -3,18 +3,20 @@ import { useTheme } from "@mui/material/styles";
 import { BsMoon, BsSun } from "react-icons/bs";
 import { useThemeContext } from "../lib/theme/ThemeContext";
 import CustomTooltip from "./CustomToolTip";
+import { useTranslation } from "react-i18next";
 const ThemeToggleButton = () => {
   const { toggleTheme, isLightMode } = useThemeContext();
   const theme = useTheme();
+  const { t } = useTranslation();
   return (
-    <CustomTooltip title="  ctrl + q تغییر پس زمینه">
+    <CustomTooltip title={t("themeToggle")}>
       <Card
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           width: "100px",
-          background : theme.palette.grey[100]
+          background: theme.palette.grey[100],
         }}
       >
         <IconButton

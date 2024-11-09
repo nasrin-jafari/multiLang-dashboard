@@ -10,9 +10,18 @@ interface InputBtnGroupProps {
 }
 
 const InputBtnGroup = forwardRef(
-  ({ placeholder, onChange, onClick, type = "text", textBtn }: InputBtnGroupProps, ref: Ref<HTMLInputElement>) => {
+  (
+    {
+      placeholder,
+      onChange,
+      onClick,
+      type = "text",
+      textBtn,
+    }: InputBtnGroupProps,
+    ref: Ref<HTMLInputElement>,
+  ) => {
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === 'Enter') {
+      if (e.key === "Enter") {
         e.preventDefault();
         onClick();
       }
@@ -27,7 +36,7 @@ const InputBtnGroup = forwardRef(
           variant="outlined"
           inputRef={ref}
           onChange={onChange}
-          onKeyPress={handleKeyPress} // اضافه کردن رویداد کلید
+          onKeyPress={handleKeyPress}
           type={type}
           sx={{ flex: 1 }}
         />
@@ -37,7 +46,7 @@ const InputBtnGroup = forwardRef(
         </Button>
       </Box>
     );
-  }
+  },
 );
 
 export default InputBtnGroup;

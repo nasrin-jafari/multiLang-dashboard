@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import { cityData } from "../constant/cityData.ts";
-import InputAutoComplete from "./InputAutoCompleteProps.tsx";
+import InputAutoComplete from "../components/InputAutoCompleteProps.tsx";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "@mui/material/styles";
 import axiosMethod from "../api";
@@ -88,7 +88,7 @@ export default function Weather() {
     );
 
     if (!cityInfo) {
-      alert(t("MenuItems.weather"));
+      toast.error(t("toast.cityNotFound"));
       return;
     }
 
@@ -110,13 +110,11 @@ export default function Weather() {
       });
     } catch (error) {
       console.error(error);
-
-      alert(t("Error.fetchWeather"));
+      toast.error(t("toast.fetchWeatherError"));
     } finally {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     if (selectedCity) {
       searchWeather();

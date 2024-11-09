@@ -11,9 +11,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { FiTrash } from "react-icons/fi";
-import InputBtnGroup from "./InputBtnGroup";
+import InputBtnGroup from "../components/InputBtnGroup.tsx";
+import { useTranslation } from "react-i18next";
 
 export default function TodoApp() {
+  const { t } = useTranslation();
+
   const [todos, setTodos] = useState<
     { id: number; text: string; completed: boolean }[]
   >(() => {
@@ -69,7 +72,7 @@ export default function TodoApp() {
     setEditMode(id);
     const todoToEdit = todos.find((todo) => todo.id === id);
     if (todoToEdit && editInputRef.current) {
-      editInputRef.current.value = todoToEdit.text; // اطمینان از وجود current
+      editInputRef.current.value = todoToEdit.text;
     }
   };
 
@@ -77,7 +80,7 @@ export default function TodoApp() {
     const editedText = editInputRef.current?.value.trim();
     if (editedText) {
       const updatedTodos = todos.map((todo) =>
-        todo.id === editMode ? { ...todo, text: editedText } : todo
+        todo.id === editMode ? { ...todo, text: editedText } : todo,
       );
 
       setTodos(updatedTodos);
@@ -87,21 +90,20 @@ export default function TodoApp() {
 
   const toggleComplete = (id: number) => {
     const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo,
     );
     setTodos(updatedTodos);
   };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" sx={{ pt: 8 }}>
       <Typography variant="h4" gutterBottom>
-        Todo App
+        {t("todoApp")}
       </Typography>
-
       <InputBtnGroup
         type="text"
-        placeholder="add todo"
-        textBtn="add todo"
+        placeholder={t("addTodoPlaceholder")}
+        textBtn={t("addTodoButton")}
         ref={inputRef}
         onClick={addTodo}
       />
@@ -111,9 +113,9 @@ export default function TodoApp() {
             key={todo.id}
             dense
             style={{
-              border: todo.completed ? "1px solid green" : "1px solid red", // رنگ سبز ملایم برای انجام شده و زرد ملایم برای انجام نشده
-              borderRadius: "4px", // برای گرد کردن گوشه‌ها
-              marginBottom: "8px", // برای فاصله بین تسک‌ها
+              border: todo.completed ? "1px solid green" : "1px solid red",
+              borderRadius: "4px",
+              marginBottom: "8px",
             }}
           >
             <Checkbox
@@ -123,8 +125,8 @@ export default function TodoApp() {
             {editMode === todo.id ? (
               <InputBtnGroup
                 type="text"
-                placeholder="edit todo"
-                textBtn="edit todo"
+                placeholder={t("editTodoPlaceholder")}
+                textBtn={t("editTodoButton")}
                 ref={editInputRef}
                 onClick={saveEditedTodo}
               />

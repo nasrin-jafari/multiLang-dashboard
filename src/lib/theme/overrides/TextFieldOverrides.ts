@@ -1,25 +1,25 @@
-import { Theme, alpha } from '@mui/material/styles';
+import { Theme, alpha } from "@mui/material/styles";
 
 const TextFieldOverrides = {
   root: ({ theme }: { theme: Theme }) => ({
-    '& .MuiOutlinedInput-root': {
-      backgroundColor: 'transparent', // Add your desired background color here
+    "& .MuiOutlinedInput-root": {
+      backgroundColor: "transparent",
       borderRadius: theme.shape.borderRadius,
 
-      '& .MuiInputBase-inputAdornedEnd': {
+      "& .MuiInputBase-inputAdornedEnd": {
         borderRadius: `0`,
       },
-      '&:hover fieldset': {
+      "&:hover fieldset": {
         borderColor: theme.palette.primary.main,
         boxShadow: `0 0 0 2px ${alpha(theme.palette.primary.main, 0.25)}`,
       },
-      '& .MuiOutlinedInput-input:-webkit-autofill': {
+      "& .MuiOutlinedInput-input:-webkit-autofill": {
         boxShadow:
-          theme.palette.mode === 'light'
+          theme.palette.mode === "light"
             ? `0 0 0 100px ${theme.palette.grey[100]} inset`
             : `0 0 0 100px ${theme.palette.grey[100]} inset`,
       },
-      '&.Mui-focused fieldset': {
+      "&.Mui-focused fieldset": {
         borderColor: theme.palette.primary.main,
         boxShadow: `0 0 0 2px ${alpha(theme.palette.primary.main, 0.25)}`,
       },

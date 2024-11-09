@@ -4,10 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store.ts";
 import { useTheme } from "@mui/material/styles";
+import ChangeUserName from "../components/changeUserName.tsx";
 const getIranTime = () => {
   const date = new Date();
   const iranTime = new Date(
-    date.toLocaleString("en-US", { timeZone: "Asia/Tehran" }),
+    date.toLocaleString("en-US", { timeZone: "Asia/Tehran" })
   );
   return iranTime;
 };
@@ -53,6 +54,7 @@ const Dashboard: React.FC = () => {
         height: "100%",
       }}
     >
+      <ChangeUserName />
       <Typography
         variant="h1"
         component="h1"
@@ -65,7 +67,7 @@ const Dashboard: React.FC = () => {
         {currentTime.toLocaleTimeString("fa-IR")}
       </Typography>
       <Typography variant="h1" component="h2" sx={{ fontSize: "2rem" }}>
-        {greeting} <span>{username ? username : `${t("Guest")}!`}</span>
+        {greeting} <span>{username ? `${username}!` : `${t("Guest")}!`}</span>
       </Typography>
     </Box>
   );

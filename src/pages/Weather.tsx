@@ -84,7 +84,7 @@ export default function Weather() {
     const cityInfo = cityData.find(
       (item) =>
         (i18n.language === "fa" ? item.city_fa : item.city).toLowerCase() ===
-        selectedCity.toLowerCase(),
+        selectedCity.toLowerCase()
     );
 
     if (!cityInfo) {
@@ -98,7 +98,7 @@ export default function Weather() {
 
     try {
       const response = await axiosMethod.get(
-        `?latitude=${lat}&longitude=${lng}&current_weather=true`,
+        `?latitude=${lat}&longitude=${lng}&current_weather=true`
       );
       const data = response.data;
 
@@ -131,13 +131,13 @@ export default function Weather() {
     <Box
       sx={{
         margin: "0 auto",
-        width: "60%",
         display: "flex",
         alignItems: selectedCity ? "center" : "flex-start",
         pt: "40px",
         px: "40px",
-        justifyContent: selectedCity ? "space-between" : "center",
+        justifyContent: "center",
         height: "100%",
+        gap: 8,
       }}
     >
       <Box
@@ -149,7 +149,7 @@ export default function Weather() {
       >
         <InputAutoComplete
           options={cityData.map((item) =>
-            i18n.language === "fa" ? item.city_fa : item.city,
+            i18n.language === "fa" ? item.city_fa : item.city
           )}
           placeholder={t("MenuItems.weather")}
           onChange={setSelectedCity}

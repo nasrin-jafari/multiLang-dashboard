@@ -54,6 +54,9 @@ const ChangeLang: React.FC = () => {
                   },
                   "&.Mui-selected": {
                     backgroundColor: theme.palette.primary.main,
+                    "&:hover": {
+                      backgroundColor: theme.palette.primary.main,
+                    },
                   },
                 },
               },

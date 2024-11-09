@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { IoCloseSharp } from "react-icons/io5";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 
 interface ConfirmationDialogProps {
   open: boolean;
@@ -29,13 +30,17 @@ const CustomModal: React.FC<ConfirmationDialogProps> = ({
   maxWidth,
 }) => {
   const theme = useTheme();
+  const { t, i18n } = useTranslation();
 
   return (
     <Dialog
       open={open}
       onClose={onClose}
       aria-labelledby="modal-title"
-      style={{ direction: "rtl", backgroundColor: "rgba(6, 70, 93, 0.2)" }}
+      style={{
+        direction: i18n.language === "en" ? "ltr" : "rtl",
+        backgroundColor: "rgba(6, 70, 93, 0.2)",
+      }}
       maxWidth={maxWidth ? maxWidth : "sm"}
       PaperProps={{
         sx: {
@@ -57,6 +62,10 @@ const CustomModal: React.FC<ConfirmationDialogProps> = ({
         {title}
       </DialogTitle>
       <DialogContent sx={{ padding: "10px" }}>{content}</DialogContent>
+      <Button
+        onClick={onClose}
+        sx={{ padding: "5px", fontSize: "24px" }}
+      ></Button>
       {type === "delete" && (
         <DialogActions>
           <Button
@@ -65,7 +74,7 @@ const CustomModal: React.FC<ConfirmationDialogProps> = ({
             color="error"
             sx={{ marginRight: "8px" }}
           >
-            خیر
+            {t("noQuestion")}
           </Button>
           <Button
             onClick={onConfirm}
@@ -73,7 +82,7 @@ const CustomModal: React.FC<ConfirmationDialogProps> = ({
             color="success"
             sx={{ marginRight: "8px" }}
           >
-            بلی
+            {t("yesQuestion")}
           </Button>
         </DialogActions>
       )}

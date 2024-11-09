@@ -13,9 +13,12 @@ import { CiEdit } from "react-icons/ci";
 import { FiTrash } from "react-icons/fi";
 import InputBtnGroup from "../components/InputBtnGroup.tsx";
 import { useTranslation } from "react-i18next";
+import CustomModal from "../components/CustomModal.tsx";
 
 export default function TodoApp() {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
+  const [todoToDelete, setTodoToDelete] = useState<number | null>(null);
 
   const [todos, setTodos] = useState<
     { id: number; text: string; completed: boolean }[]
@@ -66,6 +69,8 @@ export default function TodoApp() {
   const deleteTodo = (id: number) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
+    setOpen(false);
+    setTodoToDelete(null);
   };
 
   const editTodo = (id: number) => {
@@ -80,7 +85,7 @@ export default function TodoApp() {
     const editedText = editInputRef.current?.value.trim();
     if (editedText) {
       const updatedTodos = todos.map((todo) =>
-        todo.id === editMode ? { ...todo, text: editedText } : todo,
+        todo.id === editMode ? { ...todo, text: editedText } : todo
       );
 
       setTodos(updatedTodos);
@@ -90,7 +95,7 @@ export default function TodoApp() {
 
   const toggleComplete = (id: number) => {
     const updatedTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
     setTodos(updatedTodos);
   };
@@ -156,7 +161,10 @@ export default function TodoApp() {
                   <IconButton
                     edge="end"
                     aria-label="delete"
-                    onClick={() => deleteTodo(todo.id)}
+                    onClick={() => {
+                      setTodoToDelete(todo.id);
+                      setOpen(true);
+                    }}
                   >
                     <FiTrash size={22} />
                   </IconButton>
@@ -166,6 +174,21 @@ export default function TodoApp() {
           </ListItem>
         ))}
       </List>
+      <CustomModal
+        open={open}
+        title={t("deleteTodo")}
+        onClose={() => {
+          setOpen(false);
+          setTodoToDelete(null);
+        }}
+        type={"delete"}
+        onConfirm={() => {
+          if (todoToDelete !== null) {
+            deleteTodo(todoToDelete);
+          }
+        }}
+        content={<p>{t("confirmDelete")}</p>}
+      />
     </Container>
   );
 }

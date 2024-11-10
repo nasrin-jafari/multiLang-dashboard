@@ -261,10 +261,10 @@ export default function Layout() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, mt: 12, px: 6 }}>
+      <Box component="main" sx={{ flexGrow: 1, pt: 12, px: 6, pb: 4 }}>
         <Card
           sx={{
-            height: "80vh",
+            height: "100%",
             overflowY: "auto",
             background: theme.palette.grey[50],
           }}

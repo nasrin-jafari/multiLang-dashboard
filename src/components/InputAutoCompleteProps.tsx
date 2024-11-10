@@ -3,12 +3,7 @@ import { Autocomplete } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-
-interface InputAutoCompleteProps {
-  options: string[];
-  placeholder: string;
-  onChange: (value: string | null) => void;
-}
+import { InputAutoCompleteProps } from "../types/typeComponents.ts";
 
 const CustomPaper = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.grey[50],

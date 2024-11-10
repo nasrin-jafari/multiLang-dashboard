@@ -10,7 +10,7 @@ import {
   ListItemText,
   Toolbar,
 } from "@mui/material";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import MuiAppBar from "@mui/material/AppBar";
 import MuiDrawer from "@mui/material/Drawer";
 import { CSSObject, styled, Theme, useTheme } from "@mui/material/styles";
 import * as React from "react";
@@ -27,6 +27,7 @@ import { TiWeatherShower } from "react-icons/ti";
 import { NavLink, Outlet } from "react-router-dom";
 import ChangeLang from "./ChangeLang";
 import ThemeToggleButton from "./ChangeTheme";
+import { AppBarProps } from "../types/typeComponents.ts";
 
 const drawerWidth = 240;
 
@@ -58,10 +59,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
 }));
-
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",

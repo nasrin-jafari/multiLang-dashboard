@@ -23,13 +23,7 @@ import {
   drizzle,
 } from "../assets";
 import { toast } from "react-toastify";
-
-interface WeatherData {
-  temperature: number;
-  windspeed: number;
-  winddirection: number;
-  condition: string;
-}
+import { WeatherData } from "../types/typePages.ts";
 
 const WeatherIcon = ({ condition }: { condition: string }) => {
   switch (condition?.toLowerCase()) {
@@ -84,7 +78,7 @@ export default function Weather() {
     const cityInfo = cityData.find(
       (item) =>
         (i18n.language === "fa" ? item.city_fa : item.city).toLowerCase() ===
-        selectedCity.toLowerCase()
+        selectedCity.toLowerCase(),
     );
 
     if (!cityInfo) {
@@ -98,7 +92,7 @@ export default function Weather() {
 
     try {
       const response = await axiosMethod.get(
-        `?latitude=${lat}&longitude=${lng}&current_weather=true`
+        `?latitude=${lat}&longitude=${lng}&current_weather=true`,
       );
       const data = response.data;
 
@@ -149,7 +143,7 @@ export default function Weather() {
       >
         <InputAutoComplete
           options={cityData.map((item) =>
-            i18n.language === "fa" ? item.city_fa : item.city
+            i18n.language === "fa" ? item.city_fa : item.city,
           )}
           placeholder={t("MenuItems.weather")}
           onChange={setSelectedCity}

@@ -9,18 +9,9 @@ import {
 import { IoCloseSharp } from "react-icons/io5";
 import { useTheme } from "@mui/material/styles";
 import { useTranslation } from "react-i18next";
+import { CustomModalProps } from "../types/typeComponents.ts";
 
-interface ConfirmationDialogProps {
-  open: boolean;
-  title?: string;
-  content?: React.ReactNode;
-  onConfirm?: () => void;
-  onClose: () => void;
-  type?: string | null;
-  maxWidth?: "lg" | "md";
-}
-
-const CustomModal: React.FC<ConfirmationDialogProps> = ({
+const CustomModal: React.FC<CustomModalProps> = ({
   open,
   title,
   content,

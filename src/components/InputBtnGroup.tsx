@@ -1,13 +1,6 @@
 import { Box, Button, TextField } from "@mui/material";
 import React, { forwardRef, Ref } from "react";
-
-interface InputBtnGroupProps {
-  placeholder: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick: () => void;
-  type?: "text" | "number" | "password";
-  textBtn: string;
-}
+import { InputBtnGroupProps } from "../types/typeComponents.ts";
 
 const InputBtnGroup = forwardRef(
   (

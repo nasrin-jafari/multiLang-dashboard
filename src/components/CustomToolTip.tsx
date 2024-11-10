@@ -1,12 +1,7 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { styled } from "@mui/material/styles";
 import Tooltip, { tooltipClasses, TooltipProps } from "@mui/material/Tooltip";
-
-interface CustomTooltipProps {
-  children: ReactElement;
-  title: ReactElement | string;
-  align?: "left";
-}
+import { CustomTooltipProps } from "../types/typeComponents.ts";
 
 const CustomTooltip: React.FC<CustomTooltipProps> = ({
   children,
